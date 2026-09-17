@@ -1,8 +1,7 @@
-<img width="704" height="1490" alt="logo" src="https://github.com/user-attachments/assets/bcc87934-86cf-4204-80c2-c2f04e55cc58" /># QR Scanner Android App
+# QR Scanner Android App
 
 <p align="center">
-  <img src="path/to/your/<img width="343" height="727" alt="logo" src="https://github.com/user-attachments/assets/7229eada-d3c1-4e97-86e1-888845a4c3dc" />
-" width="128" height="128" alt="QR Scanner Logo">
+  <img src="https://github.com/user-attachments/assets/7229eada-d3c1-4e97-86e1-888845a4c3dc" width="128" height="128" alt="QR Scanner Logo">
 </p>
 
 <p align="center">
@@ -86,3 +85,4 @@ Berikut adalah gambaran singkat struktur paket sumber dalam folder `app/src/main
 ├── repository/      # Jembatan data antara database dan ViewModel (Single Source of Truth).
 ├── viewmodel/       # Pemegang state UI dan logika bisnis yang sadar siklus hidup.
 └── utils/           # Helper untuk Permission, clipboard, dan deteksi jenis konten QR.
+```
