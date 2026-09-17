@@ -1,90 +1,87 @@
-# QR Scanner
+# QR Scanner Android App
 
-Aplikasi Android untuk memindai QR Code menggunakan kamera atau gambar dari galeri, dibangun dengan Kotlin + Jetpack Compose.
+<p align="center">
+  <img src="path/to/your/app_icon.png" width="128" height="128" alt="QR Scanner Logo">
+</p>
 
-## Fitur
+<p align="center">
+  Aplikasi Android modern untuk memindai QR Code menggunakan kamera secara real-time atau dari gambar galeri, dibangun sepenuhnya menggunakan **Kotlin** dan **Jetpack Compose**.
+</p>
 
-- **Scan lewat kamera** — deteksi QR Code otomatis secara real-time menggunakan CameraX + ML Kit, lengkap dengan frame pemandu dan animasi garis pemindaian.
-- **Scan dari galeri** — pilih foto QR Code yang sudah tersimpan lewat Photo Picker bawaan Android (tanpa perlu izin penyimpanan tambahan).
-- **Hasil scan** — menampilkan isi & jenis data (URL, email, telepon, WiFi, SMS, lokasi, teks), dengan tombol Copy, Buka Link, Bagikan, dan Scan Lagi.
-- **Riwayat scan** — tersimpan otomatis secara lokal (Room/SQLite), lengkap dengan tanggal & waktu, bisa dihapus satu per satu atau semua sekaligus.
-- **Dark mode & Light mode** — mengikuti tema sistem, didesain dengan Material 3.
-- **Penanganan izin kamera** — meminta izin dengan penjelasan yang jelas, dan tombol ke Settings jika izin ditolak.
+---
 
-## Teknologi
+## 📱 Tampilan Aplikasi
 
-| Komponen | Library / Versi |
-|---|---|
-| Bahasa | Kotlin 2.0.21 |
-| UI | Jetpack Compose (Material 3) |
-| Kamera | CameraX 1.3.4 |
-| Deteksi QR | Google ML Kit Barcode Scanning 17.3.0 |
-| Database lokal | Room 2.6.1 |
-| Navigasi | Navigation Compose 2.8.3 |
-| Build | Android Gradle Plugin 8.6.1, Gradle 8.9 |
-| Min SDK | 24 (Android 7.0) |
-| Target SDK | 34 (Android 14) |
+<p align="center">
+  <img src="path/to/your/screenshot_home.png" width="250" alt="Home Screen">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="path/to/your/screenshot_scanner.png" width="250" alt="Scanner Screen">
+</p>
+<p align="center">
+  <i>(Kiri) Halaman Utama. (Kanan) Tampilan Kamera dengan Overlay Pemindaian Aktif.</i>
+</p>
 
-## Struktur Proyek
+---
 
-```
-app/src/main/java/com/example/qrscanner/
-├── MainActivity.kt, QrScannerApplication.kt
-├── navigation/      # Definisi rute & NavHost
-├── ui/screens/      # Home, Scanner, Result, History
-├── ui/components/   # ScannerOverlay, dialog izin, item riwayat
-├── ui/theme/        # Warna, tipografi, tema light/dark
-├── camera/          # Setup CameraX (preview + analisis frame)
-├── scanner/         # Pemroses ML Kit (kamera & galeri)
-├── data/            # Room database & DAO
-├── model/           # Entity & model data
-├── repository/      # Jembatan data ke ViewModel
-├── viewmodel/        # State & logika UI
-└── utils/           # Permission, clipboard, deteksi jenis konten QR
-```
+## ✨ Fitur Utama
 
-## Menjalankan di Android Studio
+-   **📸 Scan Lewat Kamera**
+    -   Deteksi QR Code otomatis secara real-time menggunakan kolaborasi **CameraX** dan **Google ML Kit**.
+    -   Dilengkapi dengan frame pemandu yang intuitif dan animasi garis pemindaian untuk pengalaman pengguna yang lebih baik (seperti terlihat pada gambar).
+-   **🖼️ Scan dari Galeri**
+    -   Pilih foto berisi QR Code yang sudah tersimpan.
+    -   Menggunakan **Photo Picker** bawaan Android modern, sehingga aplikasi **tidak memerlukan izin akses penyimpanan tambahan** apa pun.
+-   **📑 Penanganan Hasil Scan**
+    -   Menampilkan isi data dan jenis konten QR secara cerdas (URL, email, telepon, WiFi, SMS, lokasi, teks datar).
+    -   Aksi cepat sekali klik: **Copy** (Salin), **Buka Link** di browser, **Bagikan** (Share), dan **Scan Lagi**.
+-   **📜 Riwayat Scan (History)**
+    -   Tersimpan otomatis secara lokal menggunakan **Room/SQLite**.
+    -   Mencatat detail lengkap termasuk tanggal & waktu pemindaian.
+    -   Manajemen riwayat: hapus item satu per satu atau semua sekaligus.
+-   **🎨 UI/UX Modern**
+    -   Mendukung penuh **Dark Mode & Light Mode** yang mengikuti tema sistem.
+    -   Didesain menggunakan prinsip **Material 3** untuk tampilan yang bersih dan kontemporer.
+-   **🔒 Penanganan Izin (Permissions)**
+    -   Alur permintaan izin kamera yang ramah pengguna dengan penjelasan yang jelas sebelum meminta.
+    -   Menyediakan tombol akses cepat langsung ke Settings jika izin ditolak secara permanen.
 
-1. Buka folder proyek ini lewat **Android Studio → Open**.
-2. Klik **Sync Now** saat diminta.
-3. Sambungkan HP/emulator (min. Android 7.0), lalu klik **Run ▶**.
+---
 
-## Build APK dari Command Line
+## 🛠️ Teknologi & Library
 
-Proyek ini menyediakan `build.sh` untuk build APK tanpa perlu membuka Android Studio.
+Aplikasi ini menggunakan tumpukan teknologi Android terkini:
 
-**Tanpa Docker** (butuh JDK 17 terpasang):
-```bash
-./build.sh            # build APK debug
-./build.sh release    # build APK release
-```
+| Komponen | Library / Versi | Deskripsi |
+| :--- | :--- | :--- |
+| **Bahasa** | **Kotlin 2.0.21** | Bahasa pemrograman utama. |
+| **UI Framework** | **Jetpack Compose (M3)** | Toolkit modern untuk membangun UI deklaratif. |
+| **Kamera** | **CameraX 1.3.4** | Library Jetpack untuk integrasi kamera yang konsisten. |
+| **Deteksi QR** | **Google ML Kit** | Barcode Scanning API (v17.3.0) untuk deteksi on-device yang cepat. |
+| **Database Lokal** | **Room 2.6.1** | Abstraksi SQLite untuk penyimpanan riwayat. |
+| **Navigasi** | **Navigation Compose 2.8.3** | Navigasi antar layar di Compose. |
+| **Build Tool** | **AGP 8.6.1, Gradle 8.9** | Konfigurasi build proyek. |
 
-**Dengan Docker** (tidak perlu install JDK/Android SDK sendiri):
-```bash
-./build.sh --docker            # build APK debug
-./build.sh --docker release    # build APK release
-```
+### Spesifikasi Minimum
+*   **Min SDK:** 24 (Android 7.0 "Nougat")
+*   **Target SDK:** 34 (Android 14)
 
-Docker image dibangun dari `Dockerfile` yang sudah berisi JDK 17, Gradle, dan Android SDK command-line tools. Detail perintahnya juga bisa dijalankan manual:
-```bash
-docker build -t qrscanner-builder .
-docker run --rm -v "$PWD":/app -w /app qrscanner-builder gradle assembleDebug
-```
+---
 
-Hasil APK akan muncul di:
-```
-app/build/outputs/apk/debug/app-debug.apk
-app/build/outputs/apk/release/app-release.apk
-```
+## 📂 Struktur Proyek
 
-## Membuat APK Release Tertanda (Signed)
+Berikut adalah gambaran singkat struktur paket sumber dalam folder `app/src/main/java/com/example/qrscanner/`:
 
-Di Android Studio: **Build → Generate Signed Bundle / APK → APK**, lalu buat atau pilih keystore, dan pilih build variant `release`.
-
-## Catatan Izin
-
-Aplikasi hanya meminta izin **CAMERA**. Fitur scan dari galeri memakai Photo Picker bawaan Android sehingga tidak memerlukan izin akses penyimpanan sama sekali.
-
-## Lisensi
-
-Proyek ini dibuat sebagai contoh/template dan bebas dimodifikasi sesuai kebutuhan.
+```text
+├── MainActivity.kt, QrScannerApplication.kt (Entry point)
+├── navigation/      # Definisi rute, NavHost, dan argumen navigasi.
+├── ui/              
+│   ├── screens/     # Layar utama: Home, Scanner (Kamera), Result, History.
+│   ├── components/  # Komponen UI reusable: ScannerOverlay, dialog izin, item riwayat.
+│   └── theme/       # Konfigurasi Tema Material 3: Warna, tipografi, shapes.
+├── camera/          # Setup CameraX, lifecycle owner, preview use case.
+├── scanner/         # Logika pemroses ML Kit untuk frame kamera & bitmap galeri.
+├── data/            # Room database, Entities, dan DAO (Data Access Object).
+├── model/           # Model data internal aplikasi.
+├── repository/      # Jembatan data antara database dan ViewModel (Single Source of Truth).
+├── viewmodel/       # Pemegang state UI dan logika bisnis yang sadar siklus hidup.
+└── utils/           # Helper untuk Permission, clipboard, dan deteksi jenis konten QR.
